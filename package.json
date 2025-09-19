@@ -1,8 +1,9 @@
 {
   "name": "pinup",
+  "icon": "media/icon.png",
   "displayName": "Pin Up for real ones",
   "description": "Drag & drop image gallery for VS Code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.104.0"
   },
