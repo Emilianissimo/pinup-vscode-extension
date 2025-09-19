@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PinUp Gallery</title>
+  <style>
+    .category-block { margin-bottom: 20px; }
+    .category-title {
+        margin: 0 0 8px;
+        font-size: 14px;
+        color: var(--vscode-editor-foreground);
+        border-bottom: 1px solid var(--vscode-input-border);
+        padding-bottom: 2px;
+    }
+    body {
+      padding: 10px;
+      font-family: var(--vscode-font-family);
+      background: var(--vscode-sideBar-background);
+      color: var(--vscode-sideBar-foreground);
+    }
+    .selectors { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+    .category-selector { display: flex; flex-direction: column; font-size: 12px; }
+    select {
+      background: var(--vscode-input-background);
+      color: var(--vscode-input-foreground);
+      border: 1px solid var(--vscode-input-border);
+      padding: 2px 4px;
+    }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+    .image-card {
+      aspect-ratio: 4/3;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      position: relative;
+      cursor: grab;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .image-card:hover { border-color: var(--vscode-textLink-foreground); transform: scale(1.05); }
+    .image-card:active { cursor: grabbing; }
+    .card-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.8); color: white; text-align: center;
+      padding: 5px; font-size: 10px; opacity: 0; transition: opacity 0.2s;
+    }
+    .image-card:hover .card-overlay { opacity: 1; }
+    .card-overlay button {
+      background: var(--vscode-button-background); color: var(--vscode-button-foreground);
+      border: none; padding: 2px 6px; margin-left: 5px; cursor: pointer; font-size: 9px;
+    }
+  </style>
+</head>
+<body>
+  <div class="selectors">${categorySelects}</div>
+  <div class="gallery" id="gallery">${imageElements}</div>
+
+  <script>
+    const vscode = acquireVsCodeApi();
+
+    document.querySelectorAll('.image-card').forEach(card => {
+        card.addEventListener('dragend', e => {
+            vscode.postMessage({
+                command: 'openImageContainer',
+                imageUrl: card.dataset.url
+            });
+        });
+    });
+  </script>
+</body>
+</html>

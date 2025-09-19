@@ -1,0 +1,55 @@
+{
+  "name": "pinup",
+  "displayName": "Pin Up for real ones",
+  "description": "Drag & drop image gallery for VS Code",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "pinUpGallery",
+          "title": "Pin Ups",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "pinUpGallery.openImage",
+        "title": "PinUp Gallery: Open Image"
+      }
+    ],
+    "views": {
+      "pinUpGallery": [
+        {
+          "id": "pinUpGalleryView",
+          "type": "webview",
+          "name": "Pin Ups Gallery",
+          "icon": "media/icon.svg"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Emil (Emilian) Erofeevskiy",
+  "publisher": "Emil Erofeevskiy",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.104.0",
+    "typescript": "^5.9.2"
+  }
+}
