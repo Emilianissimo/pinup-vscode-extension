@@ -45,11 +45,15 @@
   },
   "keywords": [],
   "author": "Emil (Emilian) Erofeevskiy",
-  "publisher": "Emil Erofeevskiy",
+  "publisher": "EmilErofeevskiy",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^16.18.126",
     "@types/vscode": "^1.104.0",
     "typescript": "^5.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emilianissimo/pinup-vscode-extension"
   }
 }
