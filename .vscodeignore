@@ -1,6 +1,5 @@
 Makefile
 src/**
-templates/**
 .git/**
 .github/**
 .gitignore
